@@ -13,7 +13,7 @@ class FreeBookShelf extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData().copyWith(
+      theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor:kPrimaryColor,
       ),
       home: const SplashView(),
