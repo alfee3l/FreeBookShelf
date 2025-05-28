@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/Features/Splash/presentation/views/splash_view.dart';
+import 'package:free_book_shelf/constans.dart';
 
 void main() {
   runApp(const FreeBookShelf());
@@ -11,7 +12,11 @@ class FreeBookShelf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashView(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData().copyWith(
+        scaffoldBackgroundColor:kPrimaryColor,
+      ),
+      home: const SplashView(),
     );
   }
 }
