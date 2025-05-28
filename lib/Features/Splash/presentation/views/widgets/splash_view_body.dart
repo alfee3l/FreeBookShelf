@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/Features/Splash/presentation/views/widgets/animate_text.dart';
+import 'package:free_book_shelf/Features/home/presentation/views/home_view.dart';
+import 'package:free_book_shelf/constans.dart';
 import 'package:free_book_shelf/core/utils/assets.dart';
+import 'package:get/route_manager.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -16,22 +19,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-    slidingAnimation = Tween<Offset>(
-      begin: const Offset(0, 10),
-      end: Offset.zero,
-    ).animate(animationController);
-    animationController.forward();
+    initSlidingAnimation();
+    navigateToPage();
   }
-      @override
+
+ 
+
+  @override
   void dispose() {
-    
     super.dispose();
     animationController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,5 +41,27 @@ class _SplashViewBodyState extends State<SplashViewBody>
         AnimateText(slidingAnimation: slidingAnimation),
       ],
     );
+  }
+
+  void initSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 10),
+      end: Offset.zero,
+    ).animate(animationController);
+    animationController.forward();
+  }
+
+   void navigateToPage() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.to(
+        () => HomeView(),
+        transition: Transition.fade,
+        duration: kTransition,
+      );
+    });
   }
 }
