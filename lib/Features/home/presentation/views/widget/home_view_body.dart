@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_appBar.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_list_view_item.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/featured_Bbooks_list_view.dart';
+import 'package:free_book_shelf/constans.dart';
 import 'package:free_book_shelf/core/utils/assets.dart';
 import 'package:free_book_shelf/core/utils/styles.dart';
 
@@ -18,7 +19,7 @@ class HomeViewBody extends StatelessWidget {
           CustomAppBar(),
           FeaturedBooksListView(),
           SizedBox(height: 50,),
-          Text('Best Seller',style: Styles.titleMedium,),
+          Text('Best Seller',style: Styles.textStyle18,),
           BestSellerListViewItem(),
         ],
       ),
@@ -49,7 +50,14 @@ class BestSellerListViewItem extends StatelessWidget {
           ),
         ),
          ),
-        ],
+
+         Column(
+          children: [
+           
+
+          ],
+         )
+        ],  
       ),
     );
   }
