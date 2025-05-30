@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/best_seller_list_view.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_appBar.dart';
-import 'package:free_book_shelf/Features/home/presentation/views/widget/featured_Bbooks_list_view.dart';
+import 'package:free_book_shelf/Features/home/presentation/views/widget/featured_books_list_view.dart';
 
 import 'package:free_book_shelf/core/utils/styles.dart';
 
