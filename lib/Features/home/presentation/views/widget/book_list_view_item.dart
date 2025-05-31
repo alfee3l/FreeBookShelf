@@ -12,8 +12,8 @@ class BookListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){  
-        GoRouter.of(context).push(AppRouter.kBookDetailsView );
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: SizedBox(
         height: 125,
@@ -42,7 +42,9 @@ class BookListViewItem extends StatelessWidget {
                       'The Best Gifts',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Styles.textStyle20.copyWith(fontFamily: KGtSectraFine),
+                      style: Styles.textStyle20.copyWith(
+                        fontFamily: KGtSectraFine,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 3),
@@ -56,9 +58,9 @@ class BookListViewItem extends StatelessWidget {
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
-                      ),  
-                     const Spacer(),
-                     const BookRating(),
+                      ),
+                      const Spacer(),
+                      const BookRating(),
                     ],
                   ),
                 ],

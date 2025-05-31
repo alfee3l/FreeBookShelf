@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_book_image.dart';
 
@@ -8,7 +7,7 @@ class FeaturedBooksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-       height: MediaQuery.of(context).size.height *.3,
+      height: MediaQuery.of(context).size.height * .3,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {

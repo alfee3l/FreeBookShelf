@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/core/utils/assets.dart';
 
@@ -8,12 +7,13 @@ class CustomBookImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio:2.6/4,
+      aspectRatio: 2.6 / 4,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(image: AssetImage(AssetsData.testImage),
-             fit: BoxFit.fill,
+          image: DecorationImage(
+            image: AssetImage(AssetsData.testImage),
+            fit: BoxFit.fill,
           ),
         ),
       ),

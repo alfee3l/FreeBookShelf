@@ -22,8 +22,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     navigateToPage();
   }
 
- 
-
   @override
   void dispose() {
     super.dispose();
@@ -54,7 +52,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
-   void navigateToPage() {
+  void navigateToPage() {
     Future.delayed(const Duration(seconds: 3), () {
       // Get.to(
       //   () => HomeView(),
@@ -62,7 +60,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       //   duration: kTransition,
       // );
 
-        GoRouter.of(context).push(AppRouter.kHomeView);
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 }

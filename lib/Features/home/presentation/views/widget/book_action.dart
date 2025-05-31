@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:free_book_shelf/core/widget/custom_button.dart';
 
@@ -31,7 +30,7 @@ class BookAction extends StatelessWidget {
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(16),
                 bottomRight: Radius.circular(16),
-              ), 
+              ),
             ),
           ),
         ],
