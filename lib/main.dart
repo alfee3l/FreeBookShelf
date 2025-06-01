@@ -25,7 +25,7 @@ class FreeBookShelf extends StatelessWidget {
           create: (context) => FeatureBooksCubit(getIt.get<HomeRepoImpl>())..fetchFeaturedBooks(),
         ),
         BlocProvider(
-          create: (context) => NewsetBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) => NewsetBooksCubit(getIt.get<HomeRepoImpl>())..fetchNewestdBooks(),
         ),
       ],
       child: MaterialApp.router(
