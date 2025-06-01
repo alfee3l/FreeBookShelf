@@ -17,36 +17,38 @@ class ServerFailure extends Failures {
         return ServerFailure('Send timeout with ApiServer');
       case DioExceptionType.receiveTimeout:
         return ServerFailure('eceive timeout with ApiServer');
-      case DioExceptionType.badCertificate:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+      // case DioExceptionType.badCertificate:
+      //   // TODO: Handle this case.
+      //   throw UnimplementedError();
       case DioExceptionType.badResponse:
-      return ServerFailure.formResponse(dioException.response!.statusCode!, dioException.response!.data);
+        return ServerFailure.formResponse(
+          dioException.response!.statusCode!,
+          dioException.response!.data,
+        );
       case DioExceptionType.cancel:
-                return ServerFailure('Request to ApiServer was canceled');
+        return ServerFailure('Request to ApiServer was canceled');
 
       // case DioExceptionType.connectionError:
       //   // TODO: Handle this case.
       //   throw UnimplementedError();
       case DioExceptionType.unknown:
-      if(dioException.message!.contains('SocketException')){
-        return ServerFailure('No Internet Connection');
-      }
-      return ServerFailure('Unexpected Error,please try again');
+        if (dioException.message!.contains('SocketException')) {
+          return ServerFailure('No Internet Connection');
+        }
+        return ServerFailure('Unexpected Error,please try again');
       default:
-      return ServerFailure('Opps there waw an error ,please try later') ;
-    }  
+        return ServerFailure('Opps there waw an error ,please try later');
+    }
   }
 
-  factory ServerFailure.formResponse(int statusCode ,dynamic response){
-
-    if(statusCode ==400|| statusCode ==401||statusCode==403){
+  factory ServerFailure.formResponse(int statusCode, dynamic response) {
+    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['error']['message']);
-    } else if (statusCode == 400){
+    } else if (statusCode == 400) {
       return ServerFailure('screen note found,please try later');
-    }else if (statusCode==500){
+    } else if (statusCode == 500) {
       return ServerFailure('Internal Server error ,please try later ');
-    }  else{
+    } else {
       return ServerFailure('Opps there waw an error ,please try later');
     }
   }
