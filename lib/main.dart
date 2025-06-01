@@ -22,7 +22,7 @@ class FreeBookShelf extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeatureBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) => FeatureBooksCubit(getIt.get<HomeRepoImpl>())..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewsetBooksCubit(getIt.get<HomeRepoImpl>()),
