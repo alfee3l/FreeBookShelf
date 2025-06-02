@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_book_shelf/Features/home/data/models/book_model/book_model.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/book_action.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/book_rating.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_book_detail_app_Bar.dart';
@@ -7,10 +8,12 @@ import 'package:free_book_shelf/Features/home/presentation/views/widget/similar_
 import 'package:free_book_shelf/core/utils/styles.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  const BookDetailsViewBody({super.key, required this.bookModel});
+final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
+    
     var width = MediaQuery.of(context).size.width;
     return CustomScrollView(
       slivers: [
@@ -19,24 +22,26 @@ class BookDetailsViewBody extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+            
               children: [
                 CustomBookDetailsAppBar(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .2),
-                  child: CustomBookImage(imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.xtool.com%2Fblogs%2Feducation%2Fis-programming-background-important-3-questions-you-should-think-clearly&psig=AOvVaw1KT-FpXaJP6IsPqrIbBR1q&ust=1748888314791000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCODjpenq0I0DFQAAAAAdAAAAABAE',),
+                  child: CustomBookImage(imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail??'',),
                 ),
                 SizedBox(height: 43),
                 Text(
-                  'The Best Gifts',
+                  bookModel.volumeInfo.title!,
                   style: Styles.textStyle30.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 6),
                 Opacity(
                   opacity: .7,
                   child: Text(
-                    'The Jungle book',
+                    bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle18.copyWith(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w500,
@@ -45,8 +50,8 @@ class BookDetailsViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 18),
                 BookRating(
-                  rating: 5,
-                  count: 250,
+                  rating: bookModel.volumeInfo.pageCount!,
+                        count: bookModel.volumeInfo.pageCount!,
                   mainAxisAlignment: MainAxisAlignment.center),
                 const SizedBox(height: 37),
                 BookAction(),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:free_book_shelf/Features/home/presentation/view_model/featured_books_cubit/feature_books_cubit.dart';
 import 'package:free_book_shelf/Features/home/presentation/views/widget/custom_book_image.dart';
+import 'package:free_book_shelf/core/utils/app_router.dart';
 import 'package:free_book_shelf/core/widget/custom_error_widget.dart';
 import 'package:free_book_shelf/core/widget/custom_loading_indicator.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -21,17 +23,25 @@ class FeaturedBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImage(
-                    imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(
+                        context,
+                      ).push(AppRouter.kBookDetailsView, extra: state.books[index]);
+                    },
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                 );
               },
             ),
           );
-        }else if (state is FeatureBooksFailures){
+        } else if (state is FeatureBooksFailures) {
           return CustomErrorWidget(errMessage: state.errMessage);
-        }else{
+        } else {
           return CustomLoadingIndicator();
         }
       },
