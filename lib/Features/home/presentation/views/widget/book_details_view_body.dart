@@ -54,7 +54,7 @@ final BookModel bookModel;
                         count: bookModel.volumeInfo.pageCount!,
                   mainAxisAlignment: MainAxisAlignment.center),
                 const SizedBox(height: 37),
-                BookAction(),
+                BookAction(bookModel: bookModel),
                 Expanded(child: const SizedBox(height: 50)),
                 Align(
                   alignment: Alignment.centerLeft,
